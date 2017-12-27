@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - seckill@112.124.104.113" uuid="f2275905-094d-4d44-ba55-99f4f37f695a">
+    <database-info product="MySQL" version="5.6.26" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.40 ( Revision: 402933ef52cad9aa82624e80acbea46e3a701ce6 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.2">
+      <schema id="1" name="seckill"/>
+      <table id="2" parent="1" name="seckill"/>
+      <table id="3" parent="1" name="success_killes"/>
+      <routine id="4" parent="1" name="execute_seckill">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <column id="5" parent="2" name="id">
+        <comment>商品库存id</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="6" parent="2" name="name">
+        <comment>商品名称</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(120)</data-type>
+      </column>
+      <column id="7" parent="2" name="number">
+        <comment>库存数量</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="8" parent="2" name="start_time">
+        <comment>秒杀开始时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="9" parent="2" name="end_time">
+        <comment>秒杀结束时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="10" parent="2" name="created_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="11" parent="2" name="modified_time">
+        <comment>修改时间</comment>
+        <data-type>timestamp</data-type>
+      </column>
+      <key id="12" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="13" parent="3" name="id">
+        <comment>秒杀成功id</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="14" parent="3" name="seckill_id">
+        <comment>秒杀库存id</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="15" parent="3" name="user_phone">
+        <comment>用户手机号</comment>
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="16" parent="3" name="state">
+        <comment>状态标示:-1:无效 0:成功 1:已付款</comment>
+        <mandatory>1</mandatory>
+        <data-type>tinyint(4)</data-type>
+        <default-expression>&apos;-1&apos;</default-expression>
+      </column>
+      <column id="17" parent="3" name="created_time">
+        <comment>创建时间</comment>
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="18" parent="3" name="modified_time">
+        <comment>修改时间</comment>
+        <data-type>timestamp</data-type>
+      </column>
+      <key id="19" parent="3" name="PRIMARY">
+        <columns>seckill_id
+user_phone</columns>
+        <primary>1</primary>
+      </key>
+      <argument id="20" parent="4" name="v_seckill_id">
+        <direction>IN</direction>
+        <data-type>bigint(20)</data-type>
+      </argument>
+      <argument id="21" parent="4" name="v_phone">
+        <direction>IN</direction>
+        <data-type>bigint(20)</data-type>
+      </argument>
+      <argument id="22" parent="4" name="v_kill_time">
+        <direction>IN</direction>
+        <data-type>timestamp</data-type>
+      </argument>
+      <argument id="23" parent="4" name="r_result">
+        <direction>OUT</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+    </database-model>
+  </data-source>
+</component>
