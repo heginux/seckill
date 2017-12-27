@@ -44,7 +44,6 @@ public class SeckillController {
         //获取列表页
         List<Seckill> seckillList = seckillService.getSeckillList();
         model.addAttribute("list", seckillList);
-        //list.jsp +model =ModelAndView
         return "list";
     }
 
