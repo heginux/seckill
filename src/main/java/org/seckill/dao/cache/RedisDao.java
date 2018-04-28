@@ -68,21 +68,18 @@ public class RedisDao {
      * @return ‘ok’ 或 null 或 错误信息
      */
     public String setSeckill(Seckill seckill) {
+        Jedis jedis = jedisPool.getResource();
         try {
-            Jedis jedis = jedisPool.getResource();
-            try {
-                String key = "seckill_" + seckill.getId();
-                byte[] bytes = ProtostuffIOUtil.toByteArray(seckill, schema,
-                        LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
-                //设置超时缓存,1小时
-                int timeout = 60 * 60;
-                return jedis.setex(key.getBytes(), timeout, bytes);
-            } finally {
-                jedis.close();
-            }
-
+            String key = "seckill_" + seckill.getId();
+            byte[] bytes = ProtostuffIOUtil.toByteArray(seckill, schema,
+                    LinkedBuffer.allocate(LinkedBuffer.DEFAULT_BUFFER_SIZE));
+            //设置超时缓存,1小时
+            int timeout = 60 * 60;
+            return jedis.setex(key.getBytes(), timeout, bytes);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
+        } finally {
+            jedis.close();
         }
         return null;
     }
