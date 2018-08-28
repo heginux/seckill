@@ -23,8 +23,6 @@ public class SeckillDaoTest {
     @Resource
     private SeckillDao seckillDao;
 
-    private String a;
-
     @Test
     public void testGet() throws Exception {
         long id = 1000;

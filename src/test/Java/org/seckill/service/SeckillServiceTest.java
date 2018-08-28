@@ -32,14 +32,14 @@ public class SeckillServiceTest {
     private SeckillService seckillService;
 
     @Test
-    public void testGetSeckillList() throws Exception {
+    public void testGetSeckillList() {
         List<Seckill> list = seckillService.getSeckillList();
         logger.info("list={}", list);
 
     }
 
     @Test
-    public void testGet() throws Exception {
+    public void testGet() {
         long id = 1000;
         Seckill seckill = seckillService.get(id);
         logger.info("seckill={}", seckill);
